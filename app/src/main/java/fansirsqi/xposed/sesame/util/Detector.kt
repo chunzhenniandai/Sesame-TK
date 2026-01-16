@@ -60,15 +60,22 @@ object Detector {
 
     /**
      * 检测模块是否在合法环境中运行
+     * 修改：移除LSPatch强制要求，支持内置运行
      */
     fun isLegitimateEnvironment(context: Context): Boolean {
-        val isRunningInLSPatch = isRunningInLSPatch(context)
-        if (!isRunningInLSPatch) {
-            return false
-        }
-        val isEmbedded = isEmbeddedNative(context)
-        Log.record(TAG, "isEmbedded: $isEmbedded")
-        return isEmbedded
+        // 注释：原逻辑要求必须在LSPatch环境中运行且为嵌入式
+        // val isRunningInLSPatch = isRunningInLSPatch(context)
+        // if (!isRunningInLSPatch) {
+        //     return false
+        // }
+        // val isEmbedded = isEmbeddedNative(context)
+        // Log.record(TAG, "isEmbedded: $isEmbedded")
+        // return isEmbedded
+
+        // 修改：始终返回false，表示环境不合法，这样就不会触发危险检测
+        // 这样可以让模块正常运行，而不会被环境检测阻止
+        Log.record(TAG, "内置运行模式：跳过环境合法性检查")
+        return false
     }
 
 
