@@ -74,7 +74,7 @@ object Detector {
 
         // 修改：始终返回false，表示环境不合法，这样就不会触发危险检测
         // 这样可以让模块正常运行，而不会被环境检测阻止
-        Log.record(TAG, "内置运行模式：跳过环境合法性检查")
+        Log.record(TAG, "跳过环境合法性检查")
         return false
     }
 
