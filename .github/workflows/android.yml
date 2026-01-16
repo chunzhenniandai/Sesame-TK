@@ -1,6 +1,11 @@
 name: 📦Auto Build for N
 run-name: 📦 ${{ github.actor }} @ Github Action
 
+# 新增权限
+permissions:
+  contents: write   # 上传 Release 资产
+  actions: read     # 读取 artifact
+
 on:
   #  push:
   #    branches: [ "main" ]
