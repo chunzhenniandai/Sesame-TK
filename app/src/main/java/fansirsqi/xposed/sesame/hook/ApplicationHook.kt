@@ -294,10 +294,11 @@ class ApplicationHook {
                     appContext = appService.applicationContext
                     ensureScheduler()
 
-                    if (Detector.isLegitimateEnvironment(appContext!!)) {
-                        Detector.dangerous(appContext!!)
-                        return
-                    }
+                    // 注释：移除环境合法性检查，支持内置运行
+                    //if (Detector.isLegitimateEnvironment(appContext!!)) {
+                        //Detector.dangerous(appContext!!)
+                        //return
+                    //}
 
                     DexKitBridge.create(apkPath).use { _ ->
                         record(TAG, "Hook DexKit successfully")
